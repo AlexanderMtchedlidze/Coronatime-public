@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('reset-password', 'passwords.create');
-Route::view('register', 'register.create');
-Route::view('login', 'session.create');
+Route::view('reset-password', 'passwords.create')->name('reset_password');
+Route::view('register', 'register.create')->middleware('guest')->name('register');
+Route::view('login', 'session.create')->middleware('guest')->name('login');

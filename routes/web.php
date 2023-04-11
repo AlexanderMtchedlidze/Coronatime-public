@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::post('/lang/{lang}', LangController::class)->name('set_lang');
 
 Route::view('register', 'register.create')->middleware('guest')->name('register');
 Route::view('login', 'session.create')->middleware('guest')->name('login');

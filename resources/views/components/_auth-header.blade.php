@@ -9,8 +9,8 @@
                 </header>
 
                 <div>
-                    <h1 class="font-black text-2xl">Welcome back</h1>
-                    <p class="text-dark-60 mt-3 text-xl">Welcome back! Please enter your details</p>
+                    <h1 class="font-black text-2xl">{{ trans('sign_up.heading') }}</h1>
+                    <p class="text-dark-60 mt-3 text-xl">{{ trans('sign_up.subHeading') }}</p>
                 </div>
 
                 {{ $slot }}

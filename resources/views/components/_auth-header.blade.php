@@ -1,6 +1,6 @@
 <x-layout>
     <main class="flex">
-        <section class="xl:w-2/3 xl:pt-8 xl:px-24 lg:pt-6 lg:px-18 md:pt-4 md:px-12 pt-2 pb-12 px-6 sm:w-full flex-1 overflow-auto h-screen">
+        <section class="xl:w-2/3 xl:pt-8 xl:px-24 lg:pt-6 lg:px-18 md:pt-4 md:px-12 pt-2 pb-12 px-6 w-full flex-1 overflow-auto h-screen">
             <!-- container -->
             <div class="lg:w-2/3 sm:w-full flex flex-col gap-4">
                 <!-- heading -->

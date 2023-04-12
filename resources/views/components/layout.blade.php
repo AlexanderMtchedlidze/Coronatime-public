@@ -7,7 +7,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     @vite('resources/css/app.css')
 </head>
-<body class="overflow-y-hidden">
-{{ $slot }}
+<body class="overflow-hidden">
+    {{ $slot }}
 </body>
 </html>

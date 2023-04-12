@@ -8,7 +8,7 @@
     }
 @endphp
 
-<div {{ $attributes(["class" => "flex-1 h-72 bg-opacity-10 rounded-2xl flex flex-col gap-10 items-center justify-center relative bg-$color $cardClass"]) }}>
+    <div {{ $attributes(["class" => "h-72 bg-opacity-10 rounded-2xl flex flex-col gap-10 items-center justify-center bg-$color $cardClass"]) }}>
     {{ $slot }}
 
     <div class="bg-opacity-20 font-medium text-base lg:text-xl">

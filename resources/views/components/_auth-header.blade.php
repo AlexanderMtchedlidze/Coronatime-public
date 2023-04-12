@@ -10,10 +10,10 @@
                 </header>
 
                 <div>
-                    <h1 class="font-black xl:text-2xl lg:text-xl">
+                    <h1 class="font-black text-xl lg:text-2xl">
                         {{ $heading }}
                     </h1>
-                    <p class="text-dark-60 mt-3 xl:text-xl lg:text-lg">
+                    <p class="text-dark-60 mt-3 text-lg lg:text-xl">
                         {{ $subheading }}
                     </p>
                 </div>

@@ -1,7 +1,7 @@
-@props(["name", "type" => "text", "placeholder" => "", "labelName" => "$name"])
+@props(["name", "type" => "text", "placeholder", "label"])
 
 <x-form.field>
-    <x-form.label :name="$labelName"/>
+    <x-form.label :name="$name" :text="$label" />
     <input
         type="{{ $type }}"
         id="{{ $name }}"

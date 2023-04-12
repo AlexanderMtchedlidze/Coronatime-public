@@ -3,7 +3,7 @@
 return [
 	/*
 	|--------------------------------------------------------------------------
-	| Sign Up Language Lines
+	| Log In Language Lines
 	|--------------------------------------------------------------------------
 	|
 	| The following language lines are used during log in for various

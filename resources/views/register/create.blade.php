@@ -8,15 +8,15 @@
         <div>
             <div>
                 <x-form.input name="username" placeholder="{{ trans('sign_up.usernamePlaceholder') }}"
-                              label-name="{{ trans('sign_up.usernameLabel') }}"/>
+                              label="{{ trans('sign_up.usernameLabel') }}"/>
                 <p class="text-dark-60 mt-1 text-sm">{{ trans('sign_up.usernameHelperText') }}</p>
             </div>
             <x-form.input name="email" type="email" placeholder="{{ trans('sign_up.emailPlaceholder') }}"
-                          label-name="{{ trans('sign_up.emailLabel') }}" />
+                          label="{{ trans('sign_up.emailLabel') }}" />
             <x-form.input name="password" type="password" placeholder="{{ trans('sign_up.passwordPlaceholder') }}"
-                          label-name="{{ trans('sign_up.passwordLabel') }}" />
+                          label="{{ trans('sign_up.passwordLabel') }}" />
             <x-form.input name="repeat-password" type="password" placeholder="{{ trans('sign_up.repeatPasswordPlaceholder') }}"
-                          label-name="{{ trans('sign_up.repeatPasswordLabel') }}" />
+                          label="{{ trans('sign_up.repeatPasswordLabel') }}" />
         </div>
 
         <!-- footer -->

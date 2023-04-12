@@ -7,9 +7,9 @@
         <!-- form group -->
         <div>
             <x-form.input name="username" placeholder="{{ trans('log_in.usernamePlaceholder') }}"
-                          labelName="{{ trans('log_in.usernameLabel') }}"/>
+                          label="{{ trans('log_in.usernameLabel') }}"/>
             <x-form.input name="password" type="password" placeholder="{{ trans('log_in.passwordPlaceholder') }}"
-                          labelName="{{ trans('log_in.passwordLabel') }}"/>
+                          label="{{ trans('log_in.passwordLabel') }}"/>
         </div>
 
         <!-- utility section -->

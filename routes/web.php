@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LangController;
+use App\Http\Middleware\LangMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/lang/{lang}', LangController::class)->name('set_lang');
 
-Route::view('register', 'register.create')->middleware('guest')->name('register');
-Route::view('login', 'session.create')->middleware('guest')->name('login');
-Route::view('reset-password', 'passwords.create')->name('reset_password');
-Route::view('set-password', 'passwords.store')->name('set_password');
+Route::middleware(LangMiddleware::class)->group(function () {
+	Route::view('register', 'register.create')->middleware('guest')->name('register');
+	Route::view('login', 'session.create')->middleware('guest')->name('login');
+	Route::view('reset-password', 'passwords.create')->name('reset_password');
+	Route::view('set-password', 'passwords.store')->name('set_password');
+});

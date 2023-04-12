@@ -1,9 +1,9 @@
 <div class="flex justify-between">
     <div class="flex items-center">
         <input type="checkbox" id="remember" class="mr-1.5 w-5 h-5 border-dark-20 rounded text-brand-secondary">
-        <label for="remember" class="font-semibold text-sm">Remember this device</label>
+        <label for="remember" class="font-semibold text-sm">{{ trans('log_in.rememberThisDevice') }}</label>
     </div>
     <div>
-        <a href="#" class="text-brand-primary font-semibold text-sm">Forgot password?</a>
+        <a href="{{ route('reset_password') }}" class="text-brand-primary font-semibold text-sm">{{ trans('log_in.forgotPassword') }}</a>
     </div>
 </div>

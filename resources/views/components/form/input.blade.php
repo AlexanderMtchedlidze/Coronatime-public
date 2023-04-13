@@ -3,7 +3,8 @@
 @php
     $hasValidValue = !empty((old($name)) && !$errors->has($name));
 
-    $inputClass = "mt-2 py-1 px-6 border border-dark-20 rounded-lg h-14 w-full";
+    $inputClass = "mt-2 py-1 px-6 border border-dark-20 rounded-lg
+        h-14 w-full focus:border focus:border-brand-primary focus:ring-4 focus:ring-brand-glow";
     if ($hasValidValue) {
         $inputClass .= " border-system-success";
     } elseif ($errors->has($name)) {

@@ -13,16 +13,14 @@
         </div>
 
         <!-- utility section -->
-        <x-form.auth.utility-section />
+        <x-form.auth.utility-section/>
 
-        <x-slot name="footer">
-            <x-form.submit-button>{{ trans('log_in.submitButtonText') }}</x-form.submit-button>
-            <x-_footer>
-                <p class="text-dark-100">
-                    <span>{{ trans('log_in.don\'tHaveAccount') }}</span>
-                    <a href="{{ route('register') }}" class="text-black font-bold">{{ trans('log_in.signUp') }}</a>
-                </p>
-            </x-_footer>
-        </x-slot>
+        <x-form.submit-button>{{ trans('log_in.submitButtonText') }}</x-form.submit-button>
+        <x-_footer>
+            <p class="text-dark-100">
+                <span>{{ trans('log_in.don\'tHaveAccount') }}</span>
+                <a href="{{ route('register.create') }}" class="text-black font-bold">{{ trans('log_in.signUp') }}</a>
+            </p>
+        </x-_footer>
     </x-_auth-header>
 </x-layout>

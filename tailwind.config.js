@@ -17,7 +17,10 @@ module.exports = {
                 "brand-primary": "#2029F3",
                 "brand-glow": "#DBE8FB",
                 "brand-secondary": "#0FBA68",
-                "brand-tertiary": "#EAD621"
+                "brand-tertiary": "#EAD621",
+
+                "system-success": "#249E2C",
+                "system-error": "#CC1E1E",
             },
         },
     },

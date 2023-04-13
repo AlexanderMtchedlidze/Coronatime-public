@@ -14,11 +14,10 @@ module.exports = {
                 "dark-24": "#E5E5E5",
                 "dark-60": "#808189",
                 "dark-100": "#010414",
-                "brand-primary": "#2029F3",
                 "brand-glow": "#DBE8FB",
+                "brand-primary": "#2029F3",
                 "brand-secondary": "#0FBA68",
                 "brand-tertiary": "#EAD621",
-
                 "system-success": "#249E2C",
                 "system-error": "#CC1E1E",
             },

@@ -5,7 +5,7 @@
 
     $inputClass = "mt-2 py-1 px-6 border border-dark-20 rounded-lg
         h-14 w-full focus:border focus:border-brand-primary focus:ring-4 focus:ring-brand-glow";
-    if ($hasValidValue) {
+    if ($hasValidValue && $type !== "password") {
         $inputClass .= " border-system-success";
     } elseif ($errors->has($name)) {
         $inputClass .= " border-system-error";
@@ -23,7 +23,7 @@
             placeholder="{{ $placeholder }}"
             value="{{ $type !== "password" ? old("$name") : "" }}"
         />
-        @if($hasValidValue)
+        @if($hasValidValue && $type !== "password")
             <img src="{{ asset('icons/system-success.svg') }}" alt="System success icon"
                  class="absolute right-0 mr-5 mt-1 top-1/2 transform -translate-y-1/2">
         @endif

@@ -8,7 +8,7 @@
             @csrf
 
             <!-- form group -->
-            <x-form.input name="username" placeholder="{{ trans('sign_up.usernamePlaceholder') }}"
+            <x-form.input name="name" placeholder="{{ trans('sign_up.usernamePlaceholder') }}"
                           label="{{ trans('sign_up.usernameLabel') }}"/>
             <p class="text-dark-60 mt-1 text-sm">{{ trans('sign_up.usernameHelperText') }}</p>
             <x-form.input name="email" type="email" placeholder="{{ trans('sign_up.emailPlaceholder') }}"

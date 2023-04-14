@@ -10,7 +10,14 @@ class RegisterController extends Controller
 {
 	public function store(RegisterRequest $request)
 	{
-		$user = User::create($request->validated());
+		$attributes = $request->validated();
+		$user = User::create([
+			'name'     => $attributes['name'],
+			'email'    => $attributes['email'],
+			'password' => $attributes['password'],
+		]);
+
+		$user->sendConfirmationEmail();
 
 		event(new Registered($user));
 

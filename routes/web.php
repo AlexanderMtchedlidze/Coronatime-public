@@ -24,7 +24,8 @@ Route::middleware(LangMiddleware::class)->group(function () {
 	Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
 	Route::view('/email/verify', 'auth.verify-email')->name('verification.notice');
 
-	Route::view('/', 'worldwide_statistics.worldwide')->name('statistics.index');
+	Route::view('/dashboard/worldwide', 'dashboard.worldwide')->name('dashboard.worldwide');
+	Route::view('/dashboard/by-country', 'dashboard.by-country')->name('dashboard.by_country');
 
 	// register
 	Route::view('register', 'register.create')->middleware('guest')->name('register.create');
@@ -32,6 +33,6 @@ Route::middleware(LangMiddleware::class)->group(function () {
 
 	Route::view('login', 'session.create')->middleware('guest')->name('login');
 	Route::post('login', [SessionController::class, 'store'])->middleware('guest')->name('login.post');
-	Route::view('reset-password', 'passwords.create')->name('reset_password');
-	Route::view('set-password', 'passwords.store')->name('set_password');
+	Route::view('reset-password', 'passwords.reset')->name('reset_password');
+	Route::view('set-password', 'passwords.set')->name('set_password');
 });

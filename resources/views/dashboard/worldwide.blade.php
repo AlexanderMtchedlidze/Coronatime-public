@@ -1,5 +1,6 @@
 <x-layout>
     <x-_statistics-header>
+        <x-slot:title>Worldwide Statistics</x-slot:title>
         <div class="grid grid-rows-2 grid-cols-2 md:grid-rows-1 md:grid-cols-3 gap-5 md:gap-10 py-10">
             <x-statistics-card textColor="brand-primary" class="bg-brand-primary" type="pr">
                 <img src="{{ asset('statistics/new-cases.svg') }}" alt="New cases vector" class="h-16 w-24">

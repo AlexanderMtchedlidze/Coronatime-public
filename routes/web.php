@@ -3,6 +3,7 @@
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 use App\Http\Middleware\LangMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::middleware(LangMiddleware::class)->group(function () {
 	Route::post('register', [RegisterController::class, 'store'])->middleware('guest')->name('register.store');
 
 	Route::view('login', 'session.create')->middleware('guest')->name('login');
+	Route::post('login', [SessionController::class, 'store'])->middleware('guest')->name('login.post');
 	Route::view('reset-password', 'passwords.create')->name('reset_password');
 	Route::view('set-password', 'passwords.store')->name('set_password');
 });

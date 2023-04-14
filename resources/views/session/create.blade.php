@@ -5,17 +5,20 @@
         <x-slot:subheading>{{ trans('log_in.subHeading') }}</x-slot:subheading>
 
         <!-- form group -->
-        <div>
+        <form action="{{ route('login.post') }}" method="POST">
+            @csrf
+
             <x-form.input name="username" placeholder="{{ trans('log_in.usernamePlaceholder') }}"
                           label="{{ trans('log_in.usernameLabel') }}"/>
             <x-form.input name="password" type="password" placeholder="{{ trans('log_in.passwordPlaceholder') }}"
                           label="{{ trans('log_in.passwordLabel') }}"/>
-        </div>
 
-        <!-- utility section -->
-        <x-form.auth.utility-section/>
+            <!-- utility section -->
+            <x-form.auth.utility-section/>
 
-        <x-form.submit-button>{{ trans('log_in.submitButtonText') }}</x-form.submit-button>
+            <x-form.submit-button>{{ trans('log_in.submitButtonText') }}</x-form.submit-button>
+        </form>
+
         <x-_footer>
             <p class="text-dark-100">
                 <span>{{ trans('log_in.don\'tHaveAccount') }}</span>

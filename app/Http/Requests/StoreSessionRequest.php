@@ -27,7 +27,8 @@ class StoreSessionRequest extends FormRequest
 				$query->where('name', request('username'))
 					->orWhere('email', request('username'));
 			})],
-			'password' => ['required'],
+			'password'    => ['required'],
+			'remember-me' => ['boolean'],
 		];
 	}
 }

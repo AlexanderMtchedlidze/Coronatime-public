@@ -9,7 +9,7 @@ class SessionController extends Controller
 {
 	public function store(StoreSessionRequest $request)
 	{
-		if (!auth()->attempt($request->validated())) {
+		if (!auth()->attempt($request->validated(), $request->filled('remember-me'))) {
 			throw ValidationException::withMessages(['username' => trans('auth.failed')]);
 		}
 

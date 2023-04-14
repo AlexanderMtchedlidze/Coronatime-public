@@ -36,9 +36,13 @@ class FetchDataCommand extends Command
 		$data = json_decode($body, true);
 		foreach ($data as $countryData) {
 			$code = $countryData['code'];
+			$name = [
+				'en' => $countryData['name']['en'],
+				'ka' => $countryData['name']['ka'],
+			];
 			$country = Country::create([
-				'code'    => $code,
-				'name'    => json_encode($countryData['name']),
+				'code' => $code,
+				'name' => $name,
 			]);
 
 			$body = Http::post('https://devtest.ge/get-country-statistics', ['code' => $code]);

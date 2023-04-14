@@ -5,17 +5,17 @@
             <x-statistics-card textColor="brand-primary" class="bg-brand-primary" type="pr">
                 <img src="{{ asset('statistics/new-cases.svg') }}" alt="New cases vector" class="h-16 w-24">
                 <x-slot:title>{{ trans('worldwide-statistics.newCases') }}</x-slot:title>
-                <x-slot:numbers>715,523</x-slot:numbers>
+                <x-slot:numbers>{{ $totals["newCases"] }}</x-slot:numbers>
             </x-statistics-card>
             <x-statistics-card textColor="brand-secondary" class="bg-brand-secondary" type="sec">
                 <img src="{{ asset("statistics/recovered.svg") }}" alt="Recovered vector" class="h-16 w-24">
                 <x-slot:title>{{ trans('worldwide-statistics.recovered') }}</x-slot:title>
-                <x-slot:numbers>72,005</x-slot:numbers>
+                <x-slot:numbers>{{ $totals["recovered"] }}</x-slot:numbers>
             </x-statistics-card>
             <x-statistics-card textColor="brand-tertiary" class="bg-brand-tertiary" type="sec">
                 <img src="{{ asset("statistics/death.svg") }}" alt="Death vector" class="h-16 w-24">
                 <x-slot:title>{{ trans('worldwide-statistics.death') }}</x-slot:title>
-                <x-slot:numbers>8,332</x-slot:numbers>
+                <x-slot:numbers>{{ $totals["deaths"] }}</x-slot:numbers>
             </x-statistics-card>
         </div>
     </x-_statistics-header>

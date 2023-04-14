@@ -14,4 +14,13 @@ class Statistic extends Model
 	{
 		return $this->belongsTo(Country::class);
 	}
+
+	public static function getTotals(): array
+	{
+		return [
+			'newCases'  => static::sum('confirmed'),
+			'recovered' => static::sum('recovered'),
+			'deaths'    => static::sum('deaths'),
+		];
+	}
 }

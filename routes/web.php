@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\RegisterController;
@@ -24,8 +25,8 @@ Route::middleware(LangMiddleware::class)->group(function () {
 	Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
 	Route::view('/email/verify', 'auth.verify-email')->name('verification.notice');
 
-	Route::view('/dashboard/worldwide', 'dashboard.worldwide')->name('dashboard.worldwide');
-	Route::view('/dashboard/by-country', 'dashboard.by-country')->name('dashboard.by_country');
+	Route::get('/dashboard/worldwide', [DashboardController::class, 'worldwide'])->name('dashboard.worldwide');
+	Route::get('/dashboard/by-country', [DashboardController::class, 'byCountry'])->name('dashboard.by_country');
 
 	// register
 	Route::view('register', 'register.create')->middleware('guest')->name('register.create');

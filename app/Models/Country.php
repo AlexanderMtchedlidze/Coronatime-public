@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\Translatable\HasTranslations;
 
 class Country extends Model
@@ -13,10 +13,10 @@ class Country extends Model
 
 	use HasTranslations;
 
-	public $translatable = ['name'];
+	public array $translatable = ['name'];
 
-	public function statistics(): HasMany
+	public function statistics(): HasOne
 	{
-		return $this->hasMany(Statistic::class);
+		return $this->hasOne(Statistic::class);
 	}
 }

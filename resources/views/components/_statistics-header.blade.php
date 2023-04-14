@@ -20,7 +20,7 @@
         </x-dropdown>
     </div>
 </header>
-<main {{ $attributes(["class" => "py-10 md:px-12 lg:px-18 xl:px-24"]) }}>
+<main class="py-10 md:px-6 lg:px-12 xl:px-18 overflow-y-auto md:overflow-hidden">
     <div class="px-4">
         <h1 class="font-extrabold text-xl lg:text-2xl">{{ $title }}</h1>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class EmailVerificationController extends Controller
@@ -10,6 +11,8 @@ class EmailVerificationController extends Controller
 	{
 		$request->fulfill();
 
-		return redirect()->route('login');
+		event(new Verified($request->user()));
+
+		return redirect()->route('verification.feedback');
 	}
 }

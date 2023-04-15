@@ -23,10 +23,11 @@ Route::post('/lang/{lang}', LangController::class)->name('set_lang');
 
 Route::middleware(LangMiddleware::class)->group(function () {
 	Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
-	Route::view('/email/verify', 'auth.verify-email')->name('verification.notice');
+	Route::view('/email/verify', 'auth.email.verify-email')->name('verification.notice');
+	Route::view('/email/feedback', 'auth.email.feedback-email')->name('verification.feedback');
 
 	Route::get('/dashboard/worldwide', [DashboardController::class, 'worldwide'])->name('dashboard.worldwide');
-	Route::get('/dashboard/by-country', [DashboardController::class, 'byCountry'])->name('dashboard.by_country');
+	Route::get('/dashboard/by-country', [DashboardController::class, 'byCountry'])->middleware('verified')->name('dashboard.by_country');
 
 	// register
 	Route::view('register', 'register.create')->middleware('guest')->name('register.create');

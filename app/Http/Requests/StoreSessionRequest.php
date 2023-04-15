@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreSessionRequest extends FormRequest
 {
@@ -23,10 +22,7 @@ class StoreSessionRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'username' => ['required',  Rule::exists('users')->where(function ($query) {
-				$query->where('name', request('username'))
-					->orWhere('email', request('username'));
-			})],
+			'username'    => ['required'],
 			'password'    => ['required'],
 			'remember-me' => ['boolean'],
 		];

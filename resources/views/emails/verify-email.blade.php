@@ -29,7 +29,7 @@
         <p style="font-size: 1.8rem; margin-top: 2.4rem">click this button to verify your email</p>
     </div>
     <div style="text-align: center; margin-top: 4.8rem">
-        <a href=""
+        <a href="{{ $verificationUrl }}"
            style="padding: 1.5rem 11.5rem; font-size: 1.6rem; text-decoration: none; background-color: #0FBA68; color: #FFF; border-radius: .8rem; font-weight: bold">VERIFY
             EMAIL</a>
     </div>

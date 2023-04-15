@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -18,8 +17,6 @@ class RegisterController extends Controller
 		]);
 
 		$user->sendConfirmationEmail();
-
-		event(new Registered($user));
 
 		return back();
 	}

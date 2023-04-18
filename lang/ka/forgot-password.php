@@ -13,16 +13,12 @@ return [
 	*/
 
 	// heading
-	'heading'    => 'Reset password',
-
-	// password input
-	'passwordLabel'                   => 'New password',
-	'passwordPlaceholder'             => 'Enter new password',
+	'heading'    => 'პაროლის აღდგენა',
 
 	// username input
-	'repeatPasswordLabel'                            => 'Repeat password',
-	'repeatPasswordPlaceholder'                      => 'Repeat Password',
+	'emailLabel'                   => 'ელ-ფოსტა',
+	'emailPlaceholder'             => 'შეიყვანეთ ელ-ფოსტა',
 
 	// submit button
-	'submitButtonText' => 'SAVE CHANGES',
+	'submitButtonText' => 'პაროლის აღდგენა',
 ];

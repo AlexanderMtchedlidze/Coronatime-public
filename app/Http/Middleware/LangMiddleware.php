@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 
 class LangMiddleware
@@ -15,7 +16,7 @@ class LangMiddleware
 	 */
 	public function handle(Request $request, Closure $next): Response
 	{
-		$currentLang = session('lang', config('app.locale'));
+		$currentLang = Cookie::get('lang', config('app.locale'));
 
 		config(['app.locale' => $currentLang]);
 

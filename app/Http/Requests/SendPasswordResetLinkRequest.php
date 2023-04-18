@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreSessionRequest extends FormRequest
+class SendPasswordResetLinkRequest extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,9 +23,7 @@ class StoreSessionRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'username'    => ['required'],
-			'password'    => ['required'],
-			'remember-me' => ['sometimes'],
+			'email' => ['required', 'email', Rule::exists('users', 'email')],
 		];
 	}
 }

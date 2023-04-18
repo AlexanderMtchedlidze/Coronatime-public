@@ -13,16 +13,12 @@ return [
 	*/
 
 	// heading
-	'heading'    => 'Reset password',
+	'heading'    => 'Reset Password',
 
-	// password input
-	'passwordLabel'                   => 'New password',
-	'passwordPlaceholder'             => 'Enter new password',
-
-	// username input
-	'repeatPasswordLabel'                            => 'Repeat password',
-	'repeatPasswordPlaceholder'                      => 'Repeat Password',
+	// email input
+	'emailLabel'                   => 'Email',
+	'emailPlaceholder'             => 'Enter your email',
 
 	// submit button
-	'submitButtonText' => 'SAVE CHANGES',
+	'submitButtonText' => 'RESET PASSWORD',
 ];

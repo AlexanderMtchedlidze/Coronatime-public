@@ -1,3 +1,7 @@
+@php
+    $class = isset($attributes["class"]) ? $attributes["class"] : "overflow-y-auto sm:overflow-y-hidden";
+@endphp
+
 <!doctype html>
 <html lang="{{ session('lang', config("app.locale")) }}">
 <head>
@@ -7,7 +11,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     @vite('resources/css/app.css')
 </head>
-<body class="overflow-y-auto sm:overflow-y-hidden">
+<body class="{{ $class }}">
     {{ $slot }}
 </body>
 </html>

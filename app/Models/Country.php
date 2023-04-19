@@ -26,10 +26,15 @@ class Country extends Model
 	public function scopeFilter($query, array $filters)
 	{
 		$query->when(
-			$filters['name'] ?? false,
+			isset($filters['name']),
 			fn ($query, $search) => $query
-					->where('name->en', 'like', '%' . $search . '%')
-					->orWhere('name->ka', 'like', '%' . $search . '%')
+				->where('name->en', 'like', '%' . $search . '%')
+				->orWhere('name->ka', 'like', '%' . $search . '%')
+		);
+
+		$query->when(
+			isset($filters['sort']) && isset($filters['statistics']),
+			fn ($query) => $query->orderBy($filters['statistics'], $filters['sort'])
 		);
 	}
 }

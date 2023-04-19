@@ -16,7 +16,7 @@ class DashboardController extends Controller
 	public function byCountry()
 	{
 		return view('dashboard.by-country', [
-			'countries' => Country::filter(request(['name']))->get(),
+			'countries' => Country::filter(request(['name', 'sort', 'statistics']))->get(),
 			'totals'    => Country::getTotals(),
 		]);
 	}

@@ -30,7 +30,6 @@ Route::middleware(LangMiddleware::class)->group(function () {
 	Route::get('/dashboard/worldwide', [DashboardController::class, 'worldwide'])->name('dashboard.worldwide');
 	Route::get('/dashboard/by-country', [DashboardController::class, 'byCountry'])->middleware('verified')->name('dashboard.by_country');
 
-	// register
 	Route::view('/register', 'register.create')->middleware('guest')->name('register.create');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.store');
 

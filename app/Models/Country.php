@@ -22,4 +22,16 @@ class Country extends Model
 			'deaths'    => static::sum('deaths'),
 		];
 	}
+
+	public function scopeFilter($query, array $filters)
+	{
+		$query->when(
+			$filters['name'] ?? false,
+			fn ($query, $search) => $query
+				->where(
+					fn ($query) => $query->where('name->en', 'like', '%' . $search . '%')
+						->orWhere('name->ka', 'like', '%' . $search . '%')
+				)
+		);
+	}
 }

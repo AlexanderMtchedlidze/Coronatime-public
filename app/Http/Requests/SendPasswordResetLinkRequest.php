@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class RegisterRequest extends FormRequest
+class SendPasswordResetLinkRequest extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -23,10 +23,7 @@ class RegisterRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'name'            => ['required', 'min:3', 'max:255', Rule::unique('users', 'name')],
-			'email'           => ['required', 'email', 'max:255', Rule::unique('users', 'email')],
-			'password'        => ['required', 'min:8', 'max:255'],
-			'repeat-password' => ['required', 'same:password'],
+			'email' => ['required', 'email', Rule::exists('users', 'email')],
 		];
 	}
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Middleware\LangMiddleware;
@@ -30,11 +31,17 @@ Route::middleware(LangMiddleware::class)->group(function () {
 	Route::get('/dashboard/by-country', [DashboardController::class, 'byCountry'])->middleware('verified')->name('dashboard.by_country');
 
 	// register
-	Route::view('register', 'register.create')->middleware('guest')->name('register.create');
-	Route::post('register', [RegisterController::class, 'store'])->middleware('guest')->name('register.store');
+	Route::view('/register', 'register.create')->middleware('guest')->name('register.create');
+	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.store');
 
-	Route::view('login', 'session.create')->middleware('guest')->name('login');
-	Route::post('login', [SessionController::class, 'store'])->middleware('guest')->name('login.post');
-	Route::view('reset-password', 'passwords.reset')->name('reset_password');
-	Route::view('set-password', 'passwords.set')->name('set_password');
+	Route::view('/login', 'session.create')->middleware('guest')->name('login');
+	Route::post('/login', [SessionController::class, 'store'])->middleware('guest')->name('login.post');
+
+	Route::middleware('guest')->group(function () {
+		Route::view('/forgot-password', 'passwords.forgot')->name('password.request');
+		Route::post('/forgot-password', [PasswordController::class, 'sendResetLink'])->name('password.email');
+		Route::get('/reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('password.reset');
+		Route::post('/reset-password', [PasswordController::class, 'updatePassword'])->name('password.update');
+		Route::view('/password/feedback', 'auth.password.feedback-email')->name('password.feedback');
+	});
 });

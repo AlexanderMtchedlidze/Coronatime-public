@@ -15,7 +15,7 @@
                           label="{{ trans('sign-up.emailLabel') }}"/>
             <x-form.input name="password" type="password" placeholder="{{ trans('sign-up.passwordPlaceholder') }}"
                           label="{{ trans('sign-up.passwordLabel') }}"/>
-            <x-form.input name="repeat-password" type="password"
+            <x-form.input name="password_confirmation" type="password"
                           placeholder="{{ trans('sign-up.repeatPasswordPlaceholder') }}"
                           label="{{ trans('sign-up.repeatPasswordLabel') }}" class="mb-2" />
             <x-form.submit-button>{{ trans('sign-up.submitButtonText') }}</x-form.submit-button>

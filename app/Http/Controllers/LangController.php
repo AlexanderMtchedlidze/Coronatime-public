@@ -6,8 +6,6 @@ class LangController extends Controller
 {
 	public function __invoke($lang)
 	{
-		request()->session()->put('lang', $lang);
-
-		return back();
+		return back()->cookie('lang', $lang, 60 * 24 * 30);
 	}
 }

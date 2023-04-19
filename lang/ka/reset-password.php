@@ -15,10 +15,22 @@ return [
 	// heading
 	'heading'    => 'პაროლის აღდგენა',
 
+	// password input
+	'passwordLabel'                   => 'ახალი პაროლი',
+	'passwordPlaceholder'             => 'შეიყვანეთ ახალი პაროლი',
+
 	// username input
-	'emailLabel'                   => 'ელ-ფოსტა',
-	'emailPlaceholder'             => 'შეიყვანეთ ელ-ფოსტა',
+	'repeatPasswordLabel'                            => 'გაიმეორეთ პაროლი',
+	'repeatPasswordPlaceholder'                      => 'გაიმეორეთ პაროლი',
 
 	// submit button
-	'submitButtonText' => 'პაროლის აღდგენა',
+	'submitButtonText' => 'ცვლილებების დამახსოვრება',
+
+	// email
+	'emailHeading'          => 'პაროლის აღდგენა',
+	'subheading'            => 'დააკლიკეთ ქვემომდებარე ღილაკს პაროლის აღსადგენად',
+	'emailSubmitButtonText' => 'პაროლის აღდგენა',
+
+	// feedback
+	'success'   => 'თქვენი პაროლი წარმატებით აღდგა.',
 ];

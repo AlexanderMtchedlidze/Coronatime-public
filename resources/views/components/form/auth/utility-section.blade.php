@@ -4,6 +4,6 @@
         <label for="remember" class="font-semibold text-sm">{{ trans('log-in.rememberThisDevice') }}</label>
     </div>
     <div>
-        <a href="{{ route('reset_password') }}" class="text-brand-primary font-semibold text-sm">{{ trans('log-in.forgotPassword') }}</a>
+        <a href="{{ route('password.request') }}" class="text-brand-primary font-semibold text-sm">{{ trans('log-in.forgotPassword') }}</a>
     </div>
 </div>

@@ -17,10 +17,10 @@
                         <table class="w-full divide-y border border-dark-4">
                             <thead class="bg-dark-4 sticky top-0 z-10">
                             <tr>
-                                <x-table-cell :head="true">{{ trans('country-statistics.location') }}</x-table-cell>
-                                <x-table-cell :head="true">{{ trans('country-statistics.newCases') }}</x-table-cell>
-                                <x-table-cell :head="true">{{ trans('country-statistics.recovered') }}</x-table-cell>
-                                <x-table-cell :head="true">{{ trans('country-statistics.death') }}</x-table-cell>
+                                <x-table-cell :head="true" name="location">{{ trans('country-statistics.location') }}</x-table-cell>
+                                <x-table-cell :head="true" name="confirmed">{{ trans('country-statistics.newCases') }}</x-table-cell>
+                                <x-table-cell :head="true" name="recovered">{{ trans('country-statistics.recovered') }}</x-table-cell>
+                                <x-table-cell :head="true" name="deaths">{{ trans('country-statistics.death') }}</x-table-cell>
                             </tr>
                             </thead>
                             <tbody class="divide-y bg-white">

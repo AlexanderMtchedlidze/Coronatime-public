@@ -28,10 +28,8 @@ class Country extends Model
 		$query->when(
 			$filters['name'] ?? false,
 			fn ($query, $search) => $query
-				->where(
-					fn ($query) => $query->where('name->en', 'like', '%' . $search . '%')
-						->orWhere('name->ka', 'like', '%' . $search . '%')
-				)
+					->where('name->en', 'like', '%' . $search . '%')
+					->orWhere('name->ka', 'like', '%' . $search . '%')
 		);
 	}
 }

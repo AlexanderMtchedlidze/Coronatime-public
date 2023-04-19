@@ -22,6 +22,7 @@ class UpdatePasswordRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
+			'email'    => ['required'],
 			'password' => ['required', 'min:8', 'confirmed'],
 			'token'    => ['required'],
 		];

@@ -10,14 +10,27 @@ class ResetPassword extends Notification
 {
 	use Queueable;
 
+	/**
+	 * The password reset token.
+	 *
+	 * @var string
+	 */
 	public string $token;
+
+	/**
+	 * The email address of the user.
+	 *
+	 * @var string
+	 */
+	public string $email;
 
 	/**
 	 * Create a new notification instance.
 	 */
-	public function __construct($token)
+	public function __construct($token, $email)
 	{
 		$this->token = $token;
+		$this->email = $email;
 	}
 
 	/**
@@ -37,7 +50,7 @@ class ResetPassword extends Notification
 	{
 		return (new MailMessage)
 			->subject('Reset Password')
-			->view('emails.reset-password', ['token' => $this->token]);
+			->view('emails.reset-password', ['token' => $this->token, 'email' => $this->email]);
 	}
 
 	/**

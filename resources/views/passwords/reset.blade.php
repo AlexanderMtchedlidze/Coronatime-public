@@ -12,9 +12,9 @@
             <x-form.input name="password_confirmation" type="password"
                           placeholder="{{ __('reset-password.repeatPasswordPlaceholder') }}"
                           label="{{ __('reset-password.repeatPasswordLabel') }}"/>
-            <input name="email" type="hidden" value="">
+            <input name="email" type="hidden" value="{{ request('email') }}">
             <input name="token" type="hidden" value="{{ $token }}">
-            <x-form.submit-button class="mt-56">{{ __('reset-password.submitButtonText') }}</x-form.submit-button>
+            <x-form.submit-button class="mt-40 md:mt-16">{{ __('reset-password.submitButtonText') }}</x-form.submit-button>
         </form>
     </x-_reset-header>
 </x-layout>

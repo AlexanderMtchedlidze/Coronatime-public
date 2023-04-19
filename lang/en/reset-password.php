@@ -25,4 +25,12 @@ return [
 
 	// submit button
 	'submitButtonText' => 'SAVE CHANGES',
+
+	// email
+	'emailHeading'          => 'Recover password',
+	'subheading'            => 'click this button to recover a password',
+	'emailSubmitButtonText' => 'RECOVER PASSWORD',
+
+	// feedback
+	'success'   => 'Your password has been updated successfully.',
 ];

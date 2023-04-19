@@ -25,4 +25,12 @@ return [
 
 	// submit button
 	'submitButtonText' => 'ცვლილებების დამახსოვრება',
+
+	// email
+	'emailHeading'          => 'პაროლის აღდგენა',
+	'subheading'            => 'დააკლიკეთ ქვემომდებარე ღილაკს პაროლის აღსადგენად',
+	'emailSubmitButtonText' => 'პაროლის აღდგენა',
+
+	// feedback
+	'success'   => 'თქვენი პაროლი წარმატებით აღდგა.',
 ];

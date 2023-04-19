@@ -25,13 +25,12 @@
              style="max-width: 52rem">
     </div>
     <div style="text-align: center; margin-top: 4.8rem">
-        <h1 style="font-weight: bold; font-size: 2.5rem;">Reset password</h1>
-        <p style="font-size: 1.8rem; margin-top: 2.4rem">click this button to verify your email</p>
+        <h1 style="font-weight: bold; font-size: 2.5rem;">{{ __('reset-password.emailHeading') }}</h1>
+        <p style="font-size: 1.8rem; margin-top: 2.4rem">{{ __('reset-password.subheading') }}</p>
     </div>
     <div style="text-align: center; margin-top: 4.8rem">
-        <a href="{{ route('password.reset', ["token" => $token]) }}"
-           style="padding: 1.5rem 11.5rem; font-size: 1.6rem; text-decoration: none; background-color: #0FBA68; color: #FFF; border-radius: .8rem; font-weight: bold">RESET
-            PASSWORD</a>
+        <a href="{{ route('password.reset', ["token" => $token]) }}?email={{ $email }}"
+           style="padding: 1.5rem 11.5rem; font-size: 1.6rem; text-decoration: none; background-color: #0FBA68; color: #FFF; border-radius: .8rem; font-weight: bold">{{ __('reset-password.emailSubmitButtonText') }}</a>
     </div>
 </main>
 

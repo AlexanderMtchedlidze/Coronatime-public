@@ -29,7 +29,7 @@ return [
 	'forgotPassword'     => 'პაროლი დაგავიწყდათ?',
 
 	// submit button
-	'submitButtonText' => 'შესვლა',
+	'submitButtonText' => 'ანგარიშში შესვლა',
 
 	// footer
 	'don\'tHaveAccount'   => 'არ გაქვთ ანგარიში?',

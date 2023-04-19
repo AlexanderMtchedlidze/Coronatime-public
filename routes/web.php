@@ -42,5 +42,6 @@ Route::middleware(LangMiddleware::class)->group(function () {
 		Route::post('/forgot-password', [PasswordController::class, 'sendResetLink'])->name('password.email');
 		Route::get('/reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('password.reset');
 		Route::post('/reset-password', [PasswordController::class, 'updatePassword'])->name('password.update');
+		Route::view('/password/feedback', 'auth.password.feedback-email')->name('password.feedback');
 	});
 });

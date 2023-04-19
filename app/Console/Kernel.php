@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
 	 */
 	protected function schedule(Schedule $schedule): void
 	{
-		$schedule->command('app:fetch-data-command')->everyMinute();
+		$schedule->command('app:fetch-data-command')->daily();
 		$schedule->command('auth:clear-resets')->everyFifteenMinutes();
 	}
 

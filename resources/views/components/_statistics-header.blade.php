@@ -5,15 +5,18 @@
     <div class="flex gap-5 items-center">
         <x-lang-dropdown />
 
-        <p class="hidden md:block font-bold border-r border-dark-20 py-2 pr-6">Takeshi K.</p>
-        <a href="#" class="hidden md:block">{{ trans('statistics-header.logOut') }}</a>
+        <p class="hidden md:block font-bold border-r border-dark-20 py-2 pr-6">{{ auth()->user()->name }}</p>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="hidden md:block">{{ trans('statistics-header.logOut') }}</button>
+        </form>
 
         <x-dropdown :touchEdge="true">
             <x-slot:trigger>
                 <img src="{{ asset("statistics/menu.svg") }}" alt="Menu Icon" class="block md:hidden">
             </x-slot:trigger>
-            <span class="font-bold py-2 pr-6">Takeshi K.</span>
-            <form action="#" method="POST">
+            <span class="font-bold py-2 pr-6">{{ auth()->user()->name }}</span>
+            <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit">{{ trans('statistics-header.logOut') }}</button>
             </form>

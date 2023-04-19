@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
-	public function store(StoreSessionRequest $request)
+	public function login(StoreSessionRequest $request)
 	{
 		$attributes = $request->validated();
 		$user = User::where('email', $attributes['username'])
@@ -19,9 +19,19 @@ class SessionController extends Controller
 
 		if ($user && Hash::check($attributes['password'], $user->password)) {
 			Auth::login($user, $request->filled('remember-me'));
+			session()->regenerate();
 			return redirect()->route('dashboard.worldwide');
 		} else {
 			throw ValidationException::withMessages(['username' => trans('auth.failed')]);
 		}
+	}
+
+	public function logout()
+	{
+		auth()->logout();
+
+		session()->regenerate();
+
+		return redirect()->route('login');
 	}
 }

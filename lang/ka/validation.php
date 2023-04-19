@@ -19,10 +19,11 @@ return [
 	'min'        => [
 		'string'  => ':attribute უნდა აღემატებოდეს :min ასოს.',
 	],
+	'confirmed'            => 'მითითებული :attribute არ ემთხვევა გამეორებულს.',
+	'exists'               => 'მითითებული :attribute არ არსებობს.',
 	'required'             => ':attribute საჭიროა.',
-	'same'                 => ':attribute უნდა ემთხვეოდეს :other-ს.',
 	'string'               => ':attribute უნდა იყოს სტრინგი.',
-	'unique'               => ':attribute უკვე დაკავებულია.',
+	'unique'               => 'მითითებული :attribute უკვე დაკავებულია.',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,9 +54,9 @@ return [
 	*/
 
 	'attributes' => [
-		'username'        => 'მომხმარებლის სახელი',
-		'email'           => 'ელ-ფოსტა',
-		'password'        => 'პაროლი',
-		'repeat-password' => 'პაროლის გამეორება',
+		'username'              => 'მომხმარებლის სახელი',
+		'email'                 => 'ელ-ფოსტა',
+		'password'              => 'პაროლი',
+		'password_confirmation' => 'პაროლის გამეორება',
 	],
 ];

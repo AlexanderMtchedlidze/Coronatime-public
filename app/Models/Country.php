@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\Translatable\HasTranslations;
 
 class Country extends Model
@@ -15,8 +14,12 @@ class Country extends Model
 
 	public array $translatable = ['name'];
 
-	public function statistics(): HasOne
+	public static function getTotals(): array
 	{
-		return $this->hasOne(Statistic::class);
+		return [
+			'newCases'  => static::sum('confirmed'),
+			'recovered' => static::sum('recovered'),
+			'deaths'    => static::sum('deaths'),
+		];
 	}
 }

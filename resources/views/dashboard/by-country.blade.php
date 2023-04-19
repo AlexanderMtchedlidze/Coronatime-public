@@ -8,7 +8,7 @@
                    placeholder="{{ trans('country-statistics.searchPlaceholder') }}">
         </div>
         <div class="flex flex-col mt-5 overflow-y-auto overflow-x-hidden h-96 rounded-lg border border-dark-4">
-            <div class="-my-2 sm:-mx-6 lg:-mx-8">
+            <div class="sm:-mx-6 lg:-mx-8">
                 <div class="sm:px-6 lg:px-8">
                     <div class="shadow">
                         <table class="w-full divide-y">
@@ -30,9 +30,9 @@
                             @foreach($countries as $country)
                                 <tr>
                                     <x-table-cell>{{ $country->name }}</x-table-cell>
-                                    <x-table-cell>{{ $country->statistics->confirmed }}</x-table-cell>
-                                    <x-table-cell>{{ $country->statistics->recovered }}</x-table-cell>
-                                    <x-table-cell>{{ $country->statistics->deaths }}</x-table-cell>
+                                    <x-table-cell>{{ $country->confirmed }}</x-table-cell>
+                                    <x-table-cell>{{ $country->recovered }}</x-table-cell>
+                                    <x-table-cell>{{ $country->deaths }}</x-table-cell>
                                 </tr>
                             @endforeach
                             </tbody>

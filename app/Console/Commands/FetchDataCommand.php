@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\Country;
-use App\Models\Statistic;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -31,7 +30,6 @@ class FetchDataCommand extends Command
 	{
 		// Delete all records from the `statistics` table
 		DB::table('countries')->delete();
-		Statistic::truncate();
 		$body = Http::get('https://devtest.ge/countries')->body();
 		$data = json_decode($body, true);
 		foreach ($data as $countryData) {
@@ -40,18 +38,14 @@ class FetchDataCommand extends Command
 				'en' => $countryData['name']['en'],
 				'ka' => $countryData['name']['ka'],
 			];
-			$country = Country::create([
-				'code' => $code,
-				'name' => $name,
-			]);
-
 			$body = Http::post('https://devtest.ge/get-country-statistics', ['code' => $code]);
 			$data = json_decode($body, true);
-			Statistic::create([
-				'country_id' => $country->id,
-				'confirmed'  => $data['confirmed'],
-				'recovered'  => $data['recovered'],
-				'deaths'     => $data['deaths'],
+			$country = Country::create([
+				'code'      => $code,
+				'name'      => $name,
+				'confirmed' => $data['confirmed'],
+				'recovered' => $data['recovered'],
+				'deaths'    => $data['deaths'],
 			]);
 		}
 

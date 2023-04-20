@@ -1,4 +1,4 @@
-@props(["name"])
+@props(["name", "active" => false])
 
 @php
     $baseUrl = route('dashboard.by_country');
@@ -16,12 +16,13 @@
     $ascUrl = $baseUrl . $searchQuery . "sort=asc" . $statsQuery;
     $descUrl = $baseUrl. $searchQuery . "sort=desc" . $statsQuery;
     $fullUrl = urldecode(request()->fullUrl());
+    $isDefaultActive = $active && $fullUrl === $baseUrl;
 @endphp
 
 <form action="{{ route('dashboard.by_country') }}" method="GET">
     <div class="flex flex-col gap-1">
         <button type="submit" name="sort" value="asc">
-            @if($ascUrl === $fullUrl)
+            @if($ascUrl === $fullUrl || $isDefaultActive)
                 <img src="{{ asset("icons/sort/up-sort-active.svg") }}" alt="Active ascending sort icon">
             @else
                 <img src="{{ asset("icons/sort/up-sort-inactive.svg") }}" alt="Inactive ascending sort icon">

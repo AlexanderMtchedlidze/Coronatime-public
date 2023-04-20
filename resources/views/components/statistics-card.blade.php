@@ -1,4 +1,4 @@
-@props(["textColor", "type" => "pr"])
+@props(["type"])
 
 @php
     if ($type === "pr") {
@@ -7,15 +7,14 @@
         $cardClass = "row-start-2 md:row-start-1";
     }
 @endphp
-
-    <div {{ $attributes(["class" => "h-72 bg-opacity-10 rounded-2xl flex flex-col gap-10 items-center justify-center $cardClass"]) }}>
+<div {{ $attributes(["class" => "h-72 bg-opacity-10 rounded-2xl flex flex-col gap-10 items-center justify-center $cardClass"]) }}>
     {{ $slot }}
 
-    <div class="bg-opacity-20 font-medium text-base lg:text-xl">
+    <div class="bg-opacity-20 font-medium text-base lg:text-xl text-black">
         {{ $title }}
     </div>
 
-    <div class="font-bold  text-3xl lg:text-4xl text-{{ $textColor }}">
+    <div class="font-bold text-3xl lg:text-4xl">
         {{ $numbers }}
     </div>
 </div>

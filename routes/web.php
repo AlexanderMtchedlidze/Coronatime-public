@@ -42,8 +42,8 @@ Route::middleware(LangMiddleware::class)->group(function () {
 			Route::post('/reset-password', 'updatePassword')->name('password.update');
 		});
 
-		Route::view('/login', 'session.create')->name('login');
-		Route::post('/login', [SessionController::class, 'login'])->name('login.post');
+		Route::view('/login', 'session.create')->middleware('guest')->name('login');
+		Route::post('/login', [SessionController::class, 'login'])->middleware('guest')->name('login.post');
 	});
 	Route::post('/logout', [SessionController::class, 'logout'])->middleware('auth')->name('logout');
 });

@@ -27,8 +27,8 @@ Route::middleware(LangMiddleware::class)->group(function () {
 	Route::view('/email/verify', 'auth.email.verify-email')->name('verification.notice');
 	Route::view('/email/feedback', 'auth.email.feedback-email')->name('verification.feedback');
 
-	Route::get('/dashboard/worldwide', [DashboardController::class, 'worldwide'])->name('dashboard.worldwide');
-	Route::get('/dashboard/by-country', [DashboardController::class, 'byCountry'])->middleware('verified')->name('dashboard.by_country');
+	Route::get('/dashboard/worldwide', [DashboardController::class, 'worldwide'])->middleware('auth')->name('dashboard.worldwide');
+	Route::get('/dashboard/by-country', [DashboardController::class, 'byCountry'])->middleware(['verified', 'auth'])->name('dashboard.by_country');
 
 	Route::view('/register', 'register.create')->middleware('guest')->name('register.create');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.store');

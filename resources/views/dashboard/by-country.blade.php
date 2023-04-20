@@ -18,7 +18,7 @@
                             <thead class="bg-dark-4 sticky top-0 z-10">
                             <tr>
                                 <x-table-cell :head="true"
-                                              name="location">{{ trans('country-statistics.location') }}</x-table-cell>
+                                              name="location" :active="true">{{ trans('country-statistics.location') }}</x-table-cell>
                                 <x-table-cell :head="true"
                                               name="confirmed">{{ trans('country-statistics.newCases') }}</x-table-cell>
                                 <x-table-cell :head="true"

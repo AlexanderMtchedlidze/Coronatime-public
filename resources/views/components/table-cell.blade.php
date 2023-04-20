@@ -1,6 +1,6 @@
 @props(["head" => false, "name"])
 
-<td class="px-2 sm:px-4 md:px-8 py-4 text-xs sm:text-sm {{ $head ? "font-semibold" : ""}}">
+<td class="px-1 sm:px-2 md:px-4 py-4 text-xs xl:text-sm whitespace-nowrap {{ $head ? "font-semibold" : ""}}">
     <div class="flex items-center gap-2">
         {{ $slot }}
         @if($head)

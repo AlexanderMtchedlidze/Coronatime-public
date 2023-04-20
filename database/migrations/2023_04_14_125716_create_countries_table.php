@@ -14,9 +14,9 @@ return new class extends Migration {
 			$table->id();
 			$table->string('name')->unique();
 			$table->string('code')->unique();
-			$table->string('confirmed');
-			$table->string('recovered');
-			$table->string('deaths');
+			$table->integer('confirmed');
+			$table->integer('recovered');
+			$table->integer('deaths');
 			$table->timestamps();
 		});
 	}

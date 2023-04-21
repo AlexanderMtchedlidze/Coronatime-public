@@ -15,10 +15,12 @@ class SessionTest extends TestCase
 
 	private User $user;
 
+	private string $password = 'examplePassword';
+
 	protected function setUp(): void
 	{
 		parent::setUp();
-		$this->user = User::factory()->create();
+		$this->user = User::factory()->create(['password' => $this->password]);
 	}
 
 	public function test_user_can_access_log_in_page_when_he_is_not_authorized(): void
@@ -52,22 +54,14 @@ class SessionTest extends TestCase
 
 	public function test_auth_should_return_errors_when_provided_input_is_incorrect(): void
 	{
-		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->faker->password]);
+		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->password]);
 		$response->assertSessionHasErrors(['username']);
 		$this->assertGuest();
 	}
 
 	public function test_auth_should_log_in_user_when_provided_credentials_are_correct(): void
 	{
-		$email = $this->faker->email;
-		$name = $this->faker->name;
-		$password = $this->faker->password;
-		User::create([
-			'name'     => $name,
-			'email'    => $email,
-			'password' => $password,
-		]);
-		$response = $this->post('/login', ['username' => $email, 'password' => $password]);
+		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->password]);
 		$response->assertRedirect(route('dashboard.worldwide'));
 		$this->assertAuthenticated();
 	}

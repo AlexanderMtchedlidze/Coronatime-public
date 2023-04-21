@@ -50,5 +50,6 @@ class FetchDataCommand extends Command
 		}
 
 		$this->info('Data fetched and saved successfully!');
+		return 0;
 	}
 }

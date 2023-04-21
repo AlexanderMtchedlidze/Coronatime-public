@@ -6,6 +6,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
+/**
+ * @group fetch-data
+ */
 class FetchDataCommandTest extends TestCase
 {
 	use RefreshDatabase;

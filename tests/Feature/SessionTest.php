@@ -54,7 +54,7 @@ class SessionTest extends TestCase
 
 	public function test_auth_should_return_errors_when_provided_input_is_incorrect(): void
 	{
-		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->password]);
+		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->user->password]);
 		$response->assertSessionHasErrors(['username']);
 		$this->assertGuest();
 	}

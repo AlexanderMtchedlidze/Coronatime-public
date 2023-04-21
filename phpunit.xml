@@ -12,6 +12,7 @@
     <coverage>
         <include>
             <directory suffix=".php">./app</directory>
+            <file>./app/Http/Middleware/LangMiddleware.php</file>
         </include>
         <exclude>
             <file>./app/Console/Kernel.php</file>

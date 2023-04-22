@@ -24,8 +24,10 @@ Route::post('/lang/{lang}', LangController::class)->name('set_lang');
 
 Route::middleware(LangMiddleware::class)->group(function () {
 	Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
-	Route::view('/email/verify', 'auth.email.verify-email')->name('verification.notice');
 	Route::view('/email/feedback', 'auth.email.feedback-email')->name('verification.feedback');
+
+	// this route is used for noticing user to verify email after registration and continue password resetting
+	Route::view('/email/verify', 'auth.email.verify-email')->name('verification.notice');
 
 	Route::get('/dashboard/worldwide', [DashboardController::class, 'worldwide'])->middleware('auth')->name('dashboard.worldwide');
 	Route::get('/dashboard/by-country', [DashboardController::class, 'byCountry'])->middleware(['verified', 'auth'])->name('dashboard.by_country');

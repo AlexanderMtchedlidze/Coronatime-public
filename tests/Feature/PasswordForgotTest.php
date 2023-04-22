@@ -63,4 +63,11 @@ class PasswordForgotTest extends TestCase
 		]);
 		Notification::assertNothingSent();
 	}
+
+	public function test_user_will_be_redirected_to_notice_page_when_email_value_is_correct()
+	{
+		$response = $this->post('/forgot-password', ['email' => $this->user->email]);
+		$response->assertStatus(302);
+		$response->assertRedirect(route('verification.notice'));
+	}
 }

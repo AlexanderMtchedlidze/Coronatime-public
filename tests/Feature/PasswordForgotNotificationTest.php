@@ -26,9 +26,9 @@ class PasswordForgotNotificationTest extends TestCase
 		Notification::fake();
 	}
 
-	public function test_user_should_receive_password_reset_notification_when_he_provided_correct_email_address()
+	public function test_user_can_receive_password_reset_notification_with_correct_token_and_email()
 	{
-		$this->user->notify(new ResetPassword($this->token, $this->user->email));
+		$this->user->sendPasswordResetNotification($this->token);
 		Notification::assertSentTo(
 			$this->user,
 			ResetPassword::class,

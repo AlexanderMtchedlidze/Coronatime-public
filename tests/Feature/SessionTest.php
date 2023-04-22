@@ -9,9 +9,7 @@ use Tests\TestCase;
 
 class SessionTest extends TestCase
 {
-	use RefreshDatabase;
-
-	use WithFaker;
+	use RefreshDatabase, WithFaker;
 
 	private User $user;
 

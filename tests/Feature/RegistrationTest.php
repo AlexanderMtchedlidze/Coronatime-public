@@ -5,13 +5,12 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {
-	use RefreshDatabase;
-
-	use WithFaker;
+	use RefreshDatabase, WithFaker;
 
 	private User $user;
 
@@ -31,6 +30,7 @@ class RegistrationTest extends TestCase
 			'name'  => $this->name,
 			'email' => $this->email,
 		]);
+		Notification::fake();
 	}
 
 	public function test_user_can_access_register_page_when_he_is_not_authorized()
@@ -86,6 +86,7 @@ class RegistrationTest extends TestCase
 		$response->assertSessionHasErrors([
 			'email' => 'E-Mail Address already exists.',
 		]);
+		Notification::assertNothingSent();
 	}
 
 	public function test_password_input_value_must_exceed_min_3_characters()
@@ -94,6 +95,7 @@ class RegistrationTest extends TestCase
 		$response->assertSessionHasErrors([
 			'password' => 'Password must exceed 3 characters.',
 		]);
+		Notification::assertNothingSent();
 	}
 
 	public function test_password_inputs_value_must_be_matching()
@@ -102,6 +104,7 @@ class RegistrationTest extends TestCase
 		$response->assertSessionHasErrors([
 			'password' => 'The Password field confirmation does not match.',
 		]);
+		Notification::assertNothingSent();
 	}
 
 	public function test_validation_should_return_errors_when_input_value_is_partly_provided()
@@ -110,6 +113,7 @@ class RegistrationTest extends TestCase
 		$response->assertSessionHasErrors([
 			'password' => 'Password is required.',
 		]);
+		Notification::assertNothingSent();
 	}
 
 	public function test_user_should_register_when_he_provided_correct_credentials()

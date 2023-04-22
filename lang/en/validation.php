@@ -20,7 +20,7 @@ return [
 		'string'  => ':attribute must exceed :min characters.',
 	],
 	'confirmed'            => 'The :attribute field confirmation does not match.',
-	'exists'               => ':attribute does not  exist.',
+	'exists'               => ':attribute does not exist.',
 	'required'             => ':attribute is required.',
 	'string'               => ':attribute must be a string.',
 	'unique'               => ':attribute already exists.',

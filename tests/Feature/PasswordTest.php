@@ -37,24 +37,24 @@ class PasswordTest extends TestCase
 	public function test_user_can_not_send_empty_email_input_value_on_forgot_password_page()
 	{
 		$response = $this->post('/forgot-password');
-		$response->assertSessionHasErrors(['email']);
+		$response->assertSessionHasErrors([
+			'email' => 'E-Mail Address is required.',
+		]);
 	}
 
 	public function test_user_can_not_send_empty_email_input_value_is_not_valid_email_address()
 	{
 		$response = $this->post('/forgot-password', ['email' => $this->user->name]);
-		$response->assertSessionHasErrors(['email']);
+		$response->assertSessionHasErrors([
+			'email' => 'E-Mail Address must be valid E-Mail Address.',
+		]);
 	}
 
-	public function test_user_can_not_send_empty_email_input_value_exists_in_users_table()
+	public function test_user_can_not_send_empty_email_input_when_value_does_not_exist_in_users_table()
 	{
 		$response = $this->post('/forgot-password', ['email' => $this->faker->email]);
-		$response->assertSessionHasErrors(['email']);
-	}
-
-	public function test_user_can_not_send_email_input_ith_value_that_does_not_exist_in_users_table()
-	{
-		$response = $this->post('/forgot-password', ['email' => $this->faker->email]);
-		$response->assertSessionHasErrors(['email']);
+		$response->assertSessionHasErrors([
+			'email' => 'E-Mail Address does not exist.',
+		]);
 	}
 }

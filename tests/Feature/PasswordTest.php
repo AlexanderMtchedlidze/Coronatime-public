@@ -57,4 +57,9 @@ class PasswordTest extends TestCase
 			'email' => 'E-Mail Address does not exist.',
 		]);
 	}
+
+	public function test_user_should_receive_password_reset_mail_when_provided_email_input_is_correct()
+	{
+		$this->withoutExceptionHandling();
+	}
 }

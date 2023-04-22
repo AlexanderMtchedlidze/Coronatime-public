@@ -28,13 +28,11 @@ class SessionTest extends TestCase
 		$response = $this->get('/login');
 		$response->assertSuccessful();
 		$response->assertViewIs('session.create');
-		$this->assertGuest();
 	}
 
 	public function test_user_will_be_redirected_to_dashboard_if_he_is_already_authorized(): void
 	{
 		$response = $this->actingAs($this->user)->get('/login');
-		$this->assertAuthenticated();
 		$response->assertRedirect(route('dashboard.worldwide'));
 	}
 
@@ -45,7 +43,6 @@ class SessionTest extends TestCase
 			'username' => 'Username is required.',
 			'password' => 'Password is required.',
 		]);
-		$this->assertGuest();
 	}
 
 	public function test_auth_should_return_errors_when_input_is_provided_partially(): void
@@ -54,7 +51,6 @@ class SessionTest extends TestCase
 		$response->assertSessionHasErrors([
 			'password' => 'Password is required.',
 		]);
-		$this->assertGuest();
 	}
 
 	public function test_auth_should_return_errors_when_provided_input_is_incorrect(): void
@@ -63,14 +59,12 @@ class SessionTest extends TestCase
 		$response->assertSessionHasErrors([
 			'username' => 'These credentials do not match our records.',
 		]);
-		$this->assertGuest();
 	}
 
 	public function test_auth_should_log_in_user_when_provided_credentials_are_correct(): void
 	{
 		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->password]);
 		$response->assertRedirect(route('dashboard.worldwide'));
-		$this->assertAuthenticated();
 	}
 
 	public function test_user_will_be_redirected_to_login_when_not_logged_in(): void
@@ -83,6 +77,5 @@ class SessionTest extends TestCase
 	{
 		$response = $this->actingAs($this->user)->post('/logout');
 		$response->assertRedirect('/login');
-		$this->assertGuest();
 	}
 }

@@ -44,6 +44,7 @@ class RegistrationTest extends TestCase
 	{
 		$response = $this->actingAs($this->user)->get('/register');
 		$response->assertRedirect(route('dashboard.worldwide'));
+		$response->assertStatus(302);
 	}
 
 	public function test_user_can_not_submit_empty_inputs_when_registering()
@@ -127,6 +128,7 @@ class RegistrationTest extends TestCase
 		];
 		$response = $this->post('/register', $userData);
 		$response->assertRedirect(route('verification.notice'));
+		$response->assertStatus(302);
 		$this->assertDatabaseHas('users', ['name' => $userData['name']]);
 	}
 }

@@ -31,6 +31,7 @@ class PasswordForgotTest extends TestCase
 	public function test_user_can_not_access_forgot_password_page_when_he_is_authorized()
 	{
 		$response = $this->actingAs($this->user)->get('/forgot-password');
+		$response->assertStatus(302);
 		$response->assertRedirect(route('dashboard.worldwide'));
 	}
 

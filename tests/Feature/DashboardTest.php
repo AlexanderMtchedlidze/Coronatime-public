@@ -21,6 +21,7 @@ class DashboardTest extends TestCase
 	public function test_user_can_not_access_dashboard_worldwide_page_when_he_is_not_authorized(): void
 	{
 		$response = $this->get(route('dashboard.worldwide'));
+		$response->assertStatus(302);
 		$response->assertRedirect('/login');
 	}
 
@@ -33,6 +34,7 @@ class DashboardTest extends TestCase
 	public function test_user_can_not_access_dashboard_by_country_page_when_he_is_not_authorized(): void
 	{
 		$response = $this->get(route('dashboard.by_country'));
+		$response->assertStatus(302);
 		$response->assertRedirect('/login');
 	}
 
@@ -40,6 +42,7 @@ class DashboardTest extends TestCase
 	{
 		$this->user->email_verified_at = null;
 		$response = $this->actingAs($this->user)->get(route('dashboard.by_country'));
+		$response->assertStatus(302);
 		$response->assertRedirect(route('verification.notice'));
 	}
 

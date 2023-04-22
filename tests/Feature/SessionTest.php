@@ -31,6 +31,7 @@ class SessionTest extends TestCase
 	public function test_user_will_be_redirected_to_dashboard_if_he_is_already_authorized(): void
 	{
 		$response = $this->actingAs($this->user)->get('/login');
+		$response->assertStatus(302);
 		$response->assertRedirect(route('dashboard.worldwide'));
 	}
 
@@ -62,18 +63,21 @@ class SessionTest extends TestCase
 	public function test_auth_should_log_in_user_when_provided_credentials_are_correct(): void
 	{
 		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->password]);
+		$response->assertStatus(302);
 		$response->assertRedirect(route('dashboard.worldwide'));
 	}
 
 	public function test_user_will_be_redirected_to_login_when_not_logged_in(): void
 	{
 		$response = $this->post('/logout');
+		$response->assertStatus(302);
 		$response->assertRedirect('/login');
 	}
 
 	public function test_user_can_logout_when_he_is_logged_in(): void
 	{
 		$response = $this->actingAs($this->user)->post('/logout');
+		$response->assertStatus(302);
 		$response->assertRedirect('/login');
 	}
 }

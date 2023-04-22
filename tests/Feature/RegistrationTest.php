@@ -49,49 +49,67 @@ class RegistrationTest extends TestCase
 	public function test_user_can_not_submit_empty_inputs_when_registering()
 	{
 		$response = $this->post('/register');
-		$response->assertSessionHasErrors();
+		$response->assertSessionHasErrors([
+			'name'     => 'Username is required.',
+			'email'    => 'E-Mail Address is required.',
+			'password' => 'Password is required.',
+		]);
 	}
 
 	public function test_validation_should_return_error_when_name_input_does_not_contain_unique_value()
 	{
 		$response = $this->post('/register', ['name' => $this->name]);
-		$response->assertSessionHasErrors(['name']);
+		$response->assertSessionHasErrors([
+			'name' => 'Username already exists.',
+		]);
 	}
 
 	public function test_username_input_value_must_exceed_min_3_characters()
 	{
 		$response = $this->post('/register', ['name' => $this->twoChars]);
-		$response->assertSessionHasErrors(['name']);
+		$response->assertSessionHasErrors([
+			'name' => 'Username must exceed 3 characters.',
+		]);
 	}
 
 	public function test_email_input_value_must_be_a_valid_email_address()
 	{
 		$response = $this->post('/register', ['email' => 'invalidEmailAddress']);
-		$response->assertSessionHasErrors(['email']);
+		$response->assertSessionHasErrors([
+			'email' => 'E-Mail Address must be valid E-Mail Address.',
+		]);
 	}
 
 	public function test_validation_should_return_error_when_email_input_does_not_contain_unique_value()
 	{
-		$response = $this->post('/register', ['name' => $this->email]);
-		$response->assertSessionHasErrors(['email']);
+		$response = $this->post('/register', ['email' => $this->email]);
+		$response->assertSessionHasErrors([
+			'email' => 'E-Mail Address already exists.',
+		]);
 	}
 
 	public function test_password_input_value_must_exceed_min_3_characters()
 	{
 		$response = $this->post('/register', ['password' => $this->twoChars]);
-		$response->assertSessionHasErrors(['password']);
+		$response->assertSessionHasErrors([
+			'password' => 'Password must exceed 3 characters.',
+		]);
 	}
 
 	public function test_password_inputs_value_must_be_matching()
 	{
 		$response = $this->post('/register', ['password' => $this->twoChars, 'password_confirmation' => $this->faker->password]);
-		$response->assertSessionHasErrors(['password']);
+		$response->assertSessionHasErrors([
+			'password' => 'The Password field confirmation does not match.',
+		]);
 	}
 
 	public function test_validation_should_return_errors_when_input_value_is_partly_provided()
 	{
 		$response = $this->post('/register', ['name' => $this->faker->userName, 'email' => $this->faker->email]);
-		$response->assertSessionHasErrors(['password']);
+		$response->assertSessionHasErrors([
+			'password' => 'Password is required.',
+		]);
 	}
 
 	public function test_user_should_register_when_he_provided_correct_credentials()

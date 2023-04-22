@@ -41,21 +41,28 @@ class SessionTest extends TestCase
 	public function test_auth_should_return_errors_when_input_is_not_provided(): void
 	{
 		$response = $this->post('/login');
-		$response->assertSessionHasErrors(['username', 'password']);
+		$response->assertSessionHasErrors([
+			'username' => 'Username is required.',
+			'password' => 'Password is required.',
+		]);
 		$this->assertGuest();
 	}
 
 	public function test_auth_should_return_errors_when_input_is_provided_partially(): void
 	{
 		$response = $this->post('/login', ['username' => $this->user->name]);
-		$response->assertSessionHasErrors(['password']);
+		$response->assertSessionHasErrors([
+			'password' => 'Password is required.',
+		]);
 		$this->assertGuest();
 	}
 
 	public function test_auth_should_return_errors_when_provided_input_is_incorrect(): void
 	{
 		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->user->password]);
-		$response->assertSessionHasErrors(['username']);
+		$response->assertSessionHasErrors([
+			'username' => 'These credentials do not match our records.',
+		]);
 		$this->assertGuest();
 	}
 

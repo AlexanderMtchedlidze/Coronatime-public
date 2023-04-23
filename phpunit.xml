@@ -30,6 +30,8 @@
             <file>./app/Http/Middleware/ValidateSignature.php</file>
             <file>./app/Http/Middleware/VerifyCsrfToken.php</file>
 
+            <directory>./app/Notifications</directory>
+            <directory>./app/Http/Requests</directory>
             <directory>./app/View</directory>
             <directory>./app/Exceptions</directory>
             <directory>./app/Providers</directory>

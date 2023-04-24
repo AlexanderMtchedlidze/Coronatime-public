@@ -4,15 +4,19 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\View\Component;
 
-class langDropdown extends Component
+class LangDropdown extends Component
 {
+	public $currentLang;
+
 	/**
 	 * Create a new component instance.
 	 */
 	public function __construct()
 	{
+		$this->currentLang = Cookie::get('lang', config('app.locale'));
 	}
 
 	/**
@@ -21,7 +25,7 @@ class langDropdown extends Component
 	public function render(): View|Closure|string
 	{
 		return view('components.lang-dropdown', [
-			'currentLang' => session('lang', config('app.locale')),
+			'currentLang' => $this->currentLang,
 		]);
 	}
 }

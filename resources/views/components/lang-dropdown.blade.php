@@ -1,9 +1,6 @@
-@props(['currentLang'])
-
 <x-dropdown>
     <x-slot:trigger>
         <button class="flex justify-between items-center gap-1">
-
             <span>{{ trans("lang." . $currentLang) }}</span>
             <img src="{{ asset("icons/down-arrow.svg") }}" alt="Down arrow icon">
         </button>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRegisterRequest;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -17,7 +16,7 @@ class RegisterController extends Controller
 			'password' => $attributes['password'],
 		]);
 
-		event(new Registered($user));
+		$user->sendEmailConfirmationNotification();
 
 		return redirect()->route('verification.notice');
 	}

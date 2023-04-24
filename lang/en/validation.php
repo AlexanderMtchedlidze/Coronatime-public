@@ -17,10 +17,10 @@ return [
 		'string'  => ':attribute must not exceed :max characters.',
 	],
 	'min'        => [
-		'string'  => ':attribute must exceed :min charactes.',
+		'string'  => ':attribute must exceed :min characters.',
 	],
 	'confirmed'            => 'The :attribute field confirmation does not match.',
-	'exists'               => ':attribute does not  exist.',
+	'exists'               => ':attribute does not exist.',
 	'required'             => ':attribute is required.',
 	'string'               => ':attribute must be a string.',
 	'unique'               => ':attribute already exists.',
@@ -54,6 +54,7 @@ return [
 	*/
 
 	'attributes' => [
+		'name'                  => 'Username',
 		'username'              => 'Username',
 		'email'                 => 'E-Mail Address',
 		'password'              => 'Password',

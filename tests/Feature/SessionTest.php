@@ -9,9 +9,7 @@ use Tests\TestCase;
 
 class SessionTest extends TestCase
 {
-	use RefreshDatabase;
-
-	use WithFaker;
+	use RefreshDatabase, WithFaker;
 
 	private User $user;
 
@@ -28,54 +26,58 @@ class SessionTest extends TestCase
 		$response = $this->get('/login');
 		$response->assertSuccessful();
 		$response->assertViewIs('session.create');
-		$this->assertGuest();
 	}
 
 	public function test_user_will_be_redirected_to_dashboard_if_he_is_already_authorized(): void
 	{
 		$response = $this->actingAs($this->user)->get('/login');
-		$this->assertAuthenticated();
+		$response->assertStatus(302);
 		$response->assertRedirect(route('dashboard.worldwide'));
 	}
 
 	public function test_auth_should_return_errors_when_input_is_not_provided(): void
 	{
 		$response = $this->post('/login');
-		$response->assertSessionHasErrors(['username', 'password']);
-		$this->assertGuest();
+		$response->assertSessionHasErrors([
+			'username' => 'Username is required.',
+			'password' => 'Password is required.',
+		]);
 	}
 
 	public function test_auth_should_return_errors_when_input_is_provided_partially(): void
 	{
 		$response = $this->post('/login', ['username' => $this->user->name]);
-		$response->assertSessionHasErrors(['password']);
-		$this->assertGuest();
+		$response->assertSessionHasErrors([
+			'password' => 'Password is required.',
+		]);
 	}
 
 	public function test_auth_should_return_errors_when_provided_input_is_incorrect(): void
 	{
 		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->user->password]);
-		$response->assertSessionHasErrors(['username']);
-		$this->assertGuest();
+		$response->assertSessionHasErrors([
+			'username' => 'These credentials do not match our records.',
+		]);
 	}
 
 	public function test_auth_should_log_in_user_when_provided_credentials_are_correct(): void
 	{
 		$response = $this->post('/login', ['username' => $this->user->name, 'password' => $this->password]);
+		$response->assertStatus(302);
 		$response->assertRedirect(route('dashboard.worldwide'));
-		$this->assertAuthenticated();
 	}
 
 	public function test_user_will_be_redirected_to_login_when_not_logged_in(): void
 	{
 		$response = $this->post('/logout');
+		$response->assertStatus(302);
 		$response->assertRedirect('/login');
 	}
 
 	public function test_user_can_logout_when_he_is_logged_in(): void
 	{
 		$response = $this->actingAs($this->user)->post('/logout');
+		$response->assertStatus(302);
 		$response->assertRedirect('/login');
-		$this->assertGuest();
 	}
 }

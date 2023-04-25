@@ -16,7 +16,7 @@
     </div>
     <div style="text-align: center">
         <h1 style="font-size: 1.5rem; font-weight: bold">{{ $heading }}</h1>
-        <p style="font-size: 1.1rem; margin-top: 2.4rem">{{ $subheading }}</p>
+        <p style="font-size: 1.1rem; margin-top: 2.4rem">{{ $subHeading }}</p>
     </div>
     <div style="text-align: center; margin-top: 1rem;">
         <a href="{{ $url }}"

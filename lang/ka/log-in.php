@@ -18,7 +18,7 @@ return [
 
 	// username input
 	'usernameLabel'                => 'მომხმარებლის სახელი',
-	'usernamePlaceholder'          => 'შეიყვანეთ უნიკალური მომხმარებლის სახელი ან ელ-ფოსტა',
+	'usernamePlaceholder'          => 'შეიყვანეთ უნიკალური სახელი ან ელ-ფოსტა',
 
 	// password input
 	'passwordLabel'       => 'პაროლი',

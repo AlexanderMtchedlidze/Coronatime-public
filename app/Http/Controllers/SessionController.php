@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSessionRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
-	public function login(StoreSessionRequest $request)
+	public function login(StoreSessionRequest $request): RedirectResponse
 	{
 		$attributes = $request->validated();
 		$user = User::where('email', $attributes['username'])
@@ -26,7 +27,7 @@ class SessionController extends Controller
 		}
 	}
 
-	public function logout()
+	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 

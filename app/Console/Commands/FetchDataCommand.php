@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\Country;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class FetchDataCommand extends Command
@@ -28,8 +27,7 @@ class FetchDataCommand extends Command
 	 */
 	public function handle()
 	{
-		// Delete all records from the `statistics` table
-		DB::table('countries')->delete();
+		Country::truncate();
 		$body = Http::get('https://devtest.ge/countries')->body();
 		$data = json_decode($body, true);
 		foreach ($data as $countryData) {
@@ -40,7 +38,7 @@ class FetchDataCommand extends Command
 			];
 			$body = Http::post('https://devtest.ge/get-country-statistics', ['code' => $code]);
 			$data = json_decode($body, true);
-			$country = Country::create([
+			Country::create([
 				'code'      => $code,
 				'name'      => $name,
 				'confirmed' => $data['confirmed'],
@@ -50,6 +48,5 @@ class FetchDataCommand extends Command
 		}
 
 		$this->info('Data fetched and saved successfully!');
-		return 0;
 	}
 }

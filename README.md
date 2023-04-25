@@ -137,4 +137,4 @@ For more information about project standards, take a look at these docs:
 
 #
 ### Production Server
-Coronatime application is hosted on following URL
+Coronatime application is hosted on following <a href="https://corona-time.aleqsandre-mchedlidze.redberryinternship.ge/dashboard/worldwide">URL</a>

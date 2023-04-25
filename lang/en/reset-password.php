@@ -28,7 +28,7 @@ return [
 
 	// email
 	'emailHeading'          => 'Recover password',
-	'subheading'            => 'click this button to recover a password',
+	'subHeading'            => 'click this button to recover a password',
 	'emailSubmitButtonText' => 'RECOVER PASSWORD',
 
 	// feedback

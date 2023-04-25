@@ -28,7 +28,7 @@ return [
 
 	// email
 	'emailHeading'          => 'პაროლის აღდგენა',
-	'subheading'            => 'დააკლიკეთ ქვემომდებარე ღილაკს პაროლის აღსადგენად',
+	'subHeading'            => 'დააკლიკეთ ქვემომდებარე ღილაკს პაროლის აღსადგენად',
 	'emailSubmitButtonText' => 'პაროლის აღდგენა',
 
 	// feedback

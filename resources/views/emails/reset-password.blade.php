@@ -3,7 +3,7 @@
 @endphp
 
 <x-_email-header :url="$url">
-    <x-slot name="heading">{{ __('reset-password.emailHeading') }}</x-slot>
-    <x-slot name="subheading">{{ __('reset-password.subHeading') }}</x-slot>
+    <x-slot:heading>{{ __('reset-password.emailHeading') }}</x-slot:heading>
+    <x-slot:subHeading>{{ __('reset-password.subHeading') }}</x-slot:subHeading>
     {{ __('reset-password.emailSubmitButtonText') }}
 </x-_email-header>

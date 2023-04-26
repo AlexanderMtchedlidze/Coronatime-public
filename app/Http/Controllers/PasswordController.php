@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SendPasswordResetLinkRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Password;
 
 class PasswordController extends Controller
 {
-	public function sendResetLink(SendPasswordResetLinkRequest $request)
+	public function sendResetLink(SendPasswordResetLinkRequest $request): RedirectResponse
 	{
 		$status = Password::sendResetLink($request->only('email'));
 		return $status === Password::RESET_LINK_SENT
@@ -17,12 +19,12 @@ class PasswordController extends Controller
 			: redirect()->route('verification.notice')->withErrors(['password' => __($status)]);
 	}
 
-	public function resetPassword($token)
+	public function resetPassword(string $token): View
 	{
 		return view('passwords.reset', ['token' => $token]);
 	}
 
-	public function updatePassword(UpdatePasswordRequest $request)
+	public function updatePassword(UpdatePasswordRequest $request): RedirectResponse
 	{
 		$status = Password::reset(
 			$request->validated(),

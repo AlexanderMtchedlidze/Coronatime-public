@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+
 class LangController extends Controller
 {
-	public function __invoke($lang)
+	public function __invoke(string $lang): RedirectResponse
 	{
 		if ($lang === 'en' || $lang === 'ka') {
 			return back()->cookie('lang', $lang, 60 * 24 * 30);

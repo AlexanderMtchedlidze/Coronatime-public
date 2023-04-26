@@ -11,7 +11,7 @@
 <body style="font-family: Inter, sans-serif; height: 100vh; display: grid; place-items: center">
 <main>
     <div style="margin: 0 auto; max-width: 32.5rem">
-        <img src="https://iili.io/H8AIa1I.png" alt="Landing page screenshot"
+        <img src="https://imagizer.imageshack.com/img923/4633/9FHz8l.png" alt="Landing page screenshot"
              style="max-width: 100%">
     </div>
     <div style="text-align: center">

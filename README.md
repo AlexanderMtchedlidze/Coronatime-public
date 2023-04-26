@@ -14,7 +14,6 @@ Coronatime - is a platform where users can register, go through authorization (a
 * [Migrations](#migration)
 * [Tests](#tests)
 * [Development](#development)
-* [Project Structure](#project-structure)
 * [DrawSQLDiagram](#database-diagram)
 
 #
@@ -95,40 +94,6 @@ it builds your js files into executable scripts.
 If you want to watch files during development, execute instead:
 
 Then everything should be OK 🙏
-
-#
-### Project Structure
-
-```bash
-├─── app
-│   ├─── Console
-│   ├─── Exceptions
-│   ├─── Http
-│   ├─── Models
-│   ├─── Notifications
-│   ├─── Providers
-│   ├─── View
-├─── bootstrap
-├─── config
-├─── database
-├─── lang
-├─── node_modules
-├─── public
-├─── readme
-├─── tests
-├─── resources
-├─── routes
-├─── storage
-- .env
-- artisan
-- composer.json
-- package.json
-```
-
-Project structure is fairly straightforward(at least for laravel developers)...
-
-For more information about project standards, take a look at these docs:
-* [Laravel](https://laravel.com/docs/10.x)
 
 #
 ### Database Diagram - <a href="https://drawsql.app/teams/redberry-36/diagrams/coronatime">DrawSQL Diagram Link</a>

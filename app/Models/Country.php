@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cookie;
@@ -24,7 +25,7 @@ class Country extends Model
 		];
 	}
 
-	public function scopeFilter($query, array $filters)
+	public function scopeFilter(Builder $query, array $filters): void
 	{
 		$query->when(
 			$filters['name'] ?? null,

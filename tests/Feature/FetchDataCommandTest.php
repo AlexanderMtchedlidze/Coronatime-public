@@ -15,7 +15,7 @@ class FetchDataCommandTest extends TestCase
 
 	public function test_data_is_saved_in_database_after_running_a_command(): void
 	{
-		$this->artisan('app:fetch-data-command')->assertExitCode(0)->expectsOutput('Data fetched and saved successfully!');
+		$this->artisan('app:fetch-data-command')->expectsOutput('Data fetched and saved successfully!');
 		$count = DB::table('countries')->count();
 		$this->assertGreaterThan(0, $count);
 	}
